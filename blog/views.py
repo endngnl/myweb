@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse
+from blog.models import Artikel
 
 # Create your views here.
 
@@ -17,8 +18,9 @@ def kontak_abi(request):
     return render(request, 'kontak-abi.html', {'kontak':kontak})
 
 def blog(request):
-    catatan = "hari ini"
-    return render(request, 'blog.html', {'catatan':catatan})   
+    # select * from Artikel
+    blogs = Artikel.objects.all()
+    return render(request, 'blog.html', {'blogs':blogs})   
 
 def date(request):
     date = "13-02-19"
